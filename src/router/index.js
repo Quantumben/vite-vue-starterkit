@@ -1,29 +1,38 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import Home from '../components/Home.vue'
-
+import Home from "../components/Home.vue";
 
 const routes = [
-
+    { path: "/", name: "Home", component: Home },
     {
-        path: '/',
-        component: Home
+        path: "/login",
+        name: "Login",
+        component: () =>
+            import ('../components/Login.vue'),
     },
     {
-        path: '/login',
+        path: "/register",
+        name: "Register",
         component: () =>
-            import ("../components/Login.vue")
+            import ('../components/Register.vue'),
     },
     {
-        path: '/register',
+        path: "/forgot-password",
+        name: "ForgotPassword",
         component: () =>
-            import ("../components/Register.vue")
+            import ('../components/ForgotPassword.vue'),
+    },
+    {
+        path: "/password-reset/:token",
+        name: "ResetPassword",
+        component: () =>
+            import ('../components/ResetPassword.vue'),
     },
 ];
 
 const router = createRouter({
-    history: createWebHistory,
-    routes
-})
+    history: createWebHistory(),
+    routes,
+});
 
 export default router;

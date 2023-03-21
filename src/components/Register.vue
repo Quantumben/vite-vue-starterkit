@@ -80,7 +80,6 @@
                 <input
                   type="password"
                   placeholder="Password"
-                  v-model="form.password"
                   class="
                     bordder-[#E9EDF4]
                     w-full
@@ -106,7 +105,6 @@
                 <input
                   type="password"
                   placeholder="Password Confirmation"
-                  v-model="form.password_confirmation"
                   class="
                     bordder-[#E9EDF4]
                     w-full

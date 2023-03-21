@@ -1,15 +1,13 @@
-<script setup>
+<!-- <script setup>
 
 </script>
 <template>
-    
+
   <form
     class="mx-auto max-w-md bg-slate-100 p-4 mt-12 rounded-lg">
     <h3 class="font-bold">Forgot password</h3>
     <div
-      class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md"
-      v-if="authStore.status"
-    >
+      class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
       {{ authStore.status }}
     </div>
     <div class="my-6">
@@ -65,4 +63,4 @@
       Submit
     </button>
   </form>
-</template>
+</template> -->

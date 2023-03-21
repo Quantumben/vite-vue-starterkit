@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 
 </script>
 
@@ -94,4 +94,4 @@
       Reset Password
     </button>
   </form>
-</template>
+</template> -->

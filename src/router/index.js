@@ -16,18 +16,18 @@ const routes = [
         component: () =>
             import ('../components/Register.vue'),
     },
-    {
-        path: "/forgot-password",
-        name: "ForgotPassword",
-        component: () =>
-            import ('../components/ForgotPassword.vue'),
-    },
-    {
-        path: "/password-reset/:token",
-        name: "ResetPassword",
-        component: () =>
-            import ('../components/ResetPassword.vue'),
-    },
+    // {
+    //     path: "/forgot-password",
+    //     name: "ForgotPassword",
+    //     component: () =>
+    //         import ('../components/ForgotPassword.vue'),
+    // },
+    // {
+    //     path: "/password-reset/:token",
+    //     name: "ResetPassword",
+    //     component: () =>
+    //         import ('../components/ResetPassword.vue'),
+    // },
 ];
 
 const router = createRouter({

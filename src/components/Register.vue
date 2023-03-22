@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
 
-const router = useRouter();
+const authStore = useAuthStore();
+
 const form = ref({
     name: '',
     email: '',
@@ -11,21 +11,7 @@ const form = ref({
     password_confirmation: '',
   })
 
-const getToken = async () => {
-  await axios.get('/sanctum/csrf-cookie');
-};
 
-const handleRegister = async () => {
-  await getToken();
-  await axios.post('/register', {
-    name: form.value.name,
-    email: form.value.email,
-    password: form.value.password,
-    password_confirmation: form.value.password_confirmation
-  });
-
-  router.push('/');
-};
 
 
 </script>
@@ -51,14 +37,14 @@ const handleRegister = async () => {
             "
           >
             <div class="mb-10 text-center md:mb-16">QuantumBen</div>
-            <form @submit.prevent="handleRegister">
+            <form @submit.prevent="authStore.handleRegister(form)">
               <div class="mb-6">
                 <input
                   type="text"
                   placeholder="Name"
                   v-model="form.name"
                   class="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border

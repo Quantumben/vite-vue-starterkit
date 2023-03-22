@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import { data } from "autoprefixer";
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -36,6 +35,10 @@ export const useAuthStore = defineStore('auth', {
             });
 
             this.router.push('/');
+        },
+        async handleLogout() {
+            await axios.post('/logout');
+            this.authUser = null;
         }
     },
 });

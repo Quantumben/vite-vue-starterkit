@@ -1,4 +1,4 @@
-<!-- <script setup>
+<script setup>
 
 </script>
 <template>
@@ -8,7 +8,7 @@
     <h3 class="font-bold">Forgot password</h3>
     <div
       class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
-      {{ authStore.status }}
+     
     </div>
     <div class="my-6">
       <label
@@ -19,7 +19,6 @@
       <input
         type="email"
         id="email"
-        v-model="email"
         class="
           block
           w-full
@@ -36,7 +35,7 @@
           dark:focus:border-blue-500
           dark:focus:ring-blue-500
         "
-        placeholder="email@laraveller.com"
+        placeholder="omosabenedict@gmail.com"
       />
       <div class="flex">
         <span class="text-red-400 text-sm m-2 p-2"> 
@@ -63,4 +62,4 @@
       Submit
     </button>
   </form>
-</template> -->
+</template>

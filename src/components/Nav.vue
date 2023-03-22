@@ -1,4 +1,7 @@
 <script setup>
+import { useAuthStore } from '../stores/auth';
+
+const authStore = useAuthStore();
 
 </script>
 
@@ -39,7 +42,7 @@
               Home
             </router-link>
           </li>
-          <template>
+          <template v-if="!authStore.user">
             <li>
               <router-link :to="{name: 'Login'}" class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700">
                 Login
@@ -51,8 +54,10 @@
               </router-link>
             </li>
           </template>
-          <template >
-            <button class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700 md:border-0">
+          <template v-else>
+            <button 
+            @click="authStore.handleLogout"
+            class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700 md:border-0">
               Logout
             </button>
           </template>

@@ -1,4 +1,4 @@
-<!-- <script setup>
+<script setup>
 
 </script>
 
@@ -7,8 +7,6 @@
     class="max-w-md mx-auto bg-slate-100 p-4 rounded-lg mt-12">
     <div
       class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
-    
-
     </div>
     <div class="mb-6">
       <label
@@ -19,7 +17,6 @@
       <input
         type="password"
         id="password"
-        v-model="form.password"
         class="
           shadow-sm
           bg-gray-50
@@ -54,7 +51,6 @@
       <input
         type="password"
         id="repeat-password"
-        v-model="form.password_confirmation"
         class="
           shadow-sm
           bg-gray-50
@@ -94,4 +90,4 @@
       Reset Password
     </button>
   </form>
-</template> -->
+</template>

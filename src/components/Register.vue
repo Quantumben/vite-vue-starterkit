@@ -1,4 +1,33 @@
 <script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const form = ref(
+  {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+  }
+)
+const getToken = async () => {
+  await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+};
+
+const handleRegister = async () => {
+  await getToken();
+  await axios.post('/register', {
+    name: form.value.name,
+    email: form.value.email,
+    password: form.value.password,
+    password_confirmation: form.value.password_confirmation
+  });
+
+  router.push('/');
+};
+
 
 </script>
 <template>
@@ -23,7 +52,7 @@
             "
           >
             <div class="mb-10 text-center md:mb-16">QuantumBen</div>
-            <form>
+            <form @submit.prevent="handleRegister">
               <div class="mb-6">
                 <input
                   type="text"
@@ -80,6 +109,7 @@
                 <input
                   type="password"
                   placeholder="Password"
+                  v-model="form.password"
                   class="
                     bordder-[#E9EDF4]
                     w-full
@@ -95,7 +125,7 @@
                     focus-visible:shadow-none
                   "
                 />
-                <div v-if="authStore.errors.password" class="flex">
+                <div class="flex">
                   <span class="text-red-400 text-sm m-2 p-2">
              
                   </span>
@@ -105,6 +135,7 @@
                 <input
                   type="password"
                   placeholder="Password Confirmation"
+                  v-model="form.password_confirmation"
                   class="
                     bordder-[#E9EDF4]
                     w-full

@@ -1,5 +1,26 @@
 <script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+const form = ref({
+    email: '',
+    password: ''
+});
+
+const getToken = async () => {
+  await axios.get("/sanctum/csrf-cookie");
+};
+
+const handleLogin = async() => {
+    await getToken();
+    await axios.post('/login', {
+      email: form.value.email,
+      password: form.value.password
+    });
+    router.push('/');
+}
 </script>
 
 <template>
@@ -19,18 +40,17 @@
               px-10
               text-center
               sm:px-12
-              md:px-[60px]
-            "
-          >
+              md:px-[60px]">
+            
             <div class="mb-10 text-center md:mb-16">QuantumBen</div>
-            <form>
+            <form @submit.prevent="handleLogin">
               <div class="mb-6">
                 <input
                   type="email"
                   v-model="form.email"
                   placeholder="Email"
                   class="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border
@@ -41,9 +61,8 @@
                     placeholder-[#ACB6BE]
                     outline-none
                     focus:border-primary
-                    focus-visible:shadow-none
-                  "
-                />
+                    focus-visible:shadow-none"/>
+
                 <div class="flex">
                   <span class="text-red-400 text-sm m-2 p-2">
                     
@@ -56,7 +75,7 @@
                   v-model="form.password"
                   placeholder="Password"
                   class="
-                    bordder-[#E9EDF4]
+                    border-[#E9EDF4]
                     w-full
                     rounded-md
                     border

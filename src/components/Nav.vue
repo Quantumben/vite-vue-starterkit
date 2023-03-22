@@ -35,18 +35,18 @@
         bis_skin_checked="1">
         <ul class="mt-4 flex flex-col rounded-lg p-4 md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
           <li>
-            <router-link class="block rounded py-2 pr-4 pl-3 text-white" aria-current="page">
+            <router-link :to="{name: 'Home'}" class="block rounded py-2 pr-4 pl-3 text-white" aria-current="page">
               Home
             </router-link>
           </li>
           <template>
             <li>
-              <router-link class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700">
+              <router-link :to="{name: 'Login'}" class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700">
                 Login
               </router-link>
             </li>
             <li>
-              <router-link class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700 md:border-0">
+              <router-link :to="{name: 'Register'}" class="block rounded py-2 pr-4 pl-3 text-gray-50 hover:bg-gray-700 md:border-0">
                 Register
               </router-link>
             </li>

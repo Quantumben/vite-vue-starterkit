@@ -1,13 +1,29 @@
 <script setup>
+import { useAuthStore } from '../stores/auth';
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const authStore = useAuthStore();
+
+const form = ref({
+  password: '',
+  password_confirmation: '',
+  email: route.query.email,
+  token: route.params.token
+})
 
 </script>
 
 <template>
-  <form
+  <form @submit.prevent="authStore.handleResetPassword(form)"
     class="max-w-md mx-auto bg-slate-100 p-4 rounded-lg mt-12">
-    <div
-      class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
+    
+    <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md"
+    v-if="authStore.status">
+      {{ authStore.status }}
     </div>
+
     <div class="mb-6">
       <label
         for="password"
@@ -17,6 +33,7 @@
       <input
         type="password"
         id="password"
+        v-model="form.password"
         class="
           shadow-sm
           bg-gray-50
@@ -36,11 +53,15 @@
           dark:shadow-sm-light
         "
       />
-      <div class="flex">
+
+          <!-- Validation -->
+    <div v-if="authStore.errors.password" class="flex">
         <span class="text-red-400 text-sm m-2 p-2">
-   
-        </span>
-      </div>
+                {{ authStore.errors.password[0] }}
+          </span>
+    </div>
+    <!-- Validation Ends -->
+
     </div>
     <div class="mb-6">
       <label
@@ -51,6 +72,7 @@
       <input
         type="password"
         id="repeat-password"
+        v-model="form.password_confirmation"
         class="
           shadow-sm
           bg-gray-50
@@ -71,6 +93,9 @@
         "
       />
     </div>
+
+
+
     <button
       type="submit"
       class="

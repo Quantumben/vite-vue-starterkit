@@ -10,10 +10,12 @@ const email = ref('');
   <form @submit.prevent="authStore.handleForgotPassword(email)"
     class="mx-auto max-w-md bg-slate-100 p-4 mt-12 rounded-lg">
     <h3 class="font-bold">Forgot password</h3>
-    <div
-      class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
-     
+    
+    <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md"
+    v-if="authStore.status">
+      {{ authStore.status }}
     </div>
+
     <div class="my-6">
       <label
         for="email"

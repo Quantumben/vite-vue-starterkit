@@ -1,9 +1,13 @@
 <script setup>
+import { ref } from 'vue';
+import { useAuthStore } from '../stores/auth';
 
+const authStore = useAuthStore();
+const email = ref('');
 </script>
 <template>
 
-  <form
+  <form @submit.prevent="authStore.handleForgotPassword(email)"
     class="mx-auto max-w-md bg-slate-100 p-4 mt-12 rounded-lg">
     <h3 class="font-bold">Forgot password</h3>
     <div
@@ -13,12 +17,14 @@
     <div class="my-6">
       <label
         for="email"
+        
         class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
         >Your email</label
       >
       <input
         type="email"
         id="email"
+        v-model="email"
         class="
           block
           w-full
@@ -37,12 +43,16 @@
         "
         placeholder="omosabenedict@gmail.com"
       />
-      <div class="flex">
-        <span class="text-red-400 text-sm m-2 p-2"> 
 
-        </span>
+        <!-- Validation -->
+        <div v-if="authStore.errors.email" class="flex">
+            <span class="text-red-400 text-sm m-2 p-2">
+                    {{ authStore.errors.email[0] }}
+              </span>
+        </div>
+        <!-- Validation Ends -->
+    
       </div>
-    </div>
     <button
       class="
         w-full

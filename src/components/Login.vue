@@ -10,7 +10,7 @@ const form = ref({
 });
 
 const getToken = async () => {
-  await axios.get("/sanctum/csrf-cookie");
+  await axios.get('/sanctum/csrf-cookie');
 };
 
 const handleLogin = async() => {
